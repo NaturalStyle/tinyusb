@@ -41,7 +41,11 @@
 //--------------------------------------------------------------------+
 TU_ATTR_ALWAYS_INLINE static inline void osal_task_delay(uint32_t msec)
 {
-  sleep_ms(msec);
+  // sleep_ms(msec);
+  uint64_t start = time_us_64();
+  while (time_us_64() - start < msec * 1000); {
+    ;
+  }
 }
 
 //--------------------------------------------------------------------+
